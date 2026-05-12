@@ -1,0 +1,28 @@
+{
+  "overview": "ChemisteryX is a premium interactive chemistry learning platform with a cinematic Apple-level liquid glass UI. Features include a 3D molecule viewer, Virtual Lab with experiments, Periodic Table, Reaction Simulator, Carbon Explorer, Practice Mode with gamification, and a comprehensive profile dashboard.",
+  "features": [
+    "Premium liquid glass Login/Signup system",
+    "Ultimate Profile Dashboard merged with progress tracking",
+    "DP system with preset avatars and upload",
+    "Animated progress stats with counting numbers",
+    "Dock navigation with Profile icon",
+    "3D Chemical Structure Viewer",
+    "Virtual Lab with advanced experiments",
+    "Interactive Periodic Table",
+    "Reaction Simulator with 200+ reactions",
+    "Practice Mode with gamification (XP/levels/achievements)",
+    "Carbon Explorer with 3D allotropes",
+    "Explore Now guided navigation system"
+  ],
+  "category": "education",
+  "tags": [
+    "chemistry",
+    "education",
+    "interactive",
+    "3d",
+    "liquid-glass",
+    "gamification",
+    "mobile-optimized"
+  ],
+  "last_updated": "2026-05-06T14:08:07.461Z"
+}

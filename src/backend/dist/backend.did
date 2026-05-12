@@ -1,0 +1,123 @@
+type UserStats = 
+ record {
+   activityCount: nat;
+   progressScore: nat;
+   savedItemsCount: nat;
+ };
+type UserId = principal;
+type Timestamp = int;
+type ReactivityMetal = 
+ record {
+   interestingFacts: vec text;
+   name: text;
+   rank: nat;
+   reactions: vec MetalReaction;
+   symbol: text;
+ };
+type QuizQuestion = 
+ record {
+   correctAnswer: text;
+   difficulty: text;
+   explanation: text;
+   id: text;
+   options: vec text;
+   question: text;
+   questionType: text;
+   topic: text;
+ };
+type ProfileInput = 
+ record {
+   avatarUrl: opt text;
+   bio: text;
+   displayName: text;
+   username: text;
+ };
+type Profile = 
+ record {
+   avatarUrl: opt text;
+   bio: text;
+   displayName: text;
+   joinDate: Timestamp;
+   userId: UserId;
+   username: text;
+ };
+type MetalReaction = 
+ record {
+   equation: text;
+   observation: text;
+   partner: text;
+   reactionType: text;
+ };
+type Element = 
+ record {
+   atomicMass: float64;
+   atomicNumber: nat;
+   atomicRadius: float64;
+   block: text;
+   boilingPoint: float64;
+   category: text;
+   colorHex: text;
+   density: float64;
+   description: text;
+   electronConfiguration: text;
+   electronegativity: float64;
+   facts: vec text;
+   group: nat;
+   ionizationEnergy: float64;
+   meltingPoint: float64;
+   name: text;
+   period: nat;
+   state: text;
+   symbol: text;
+   uses: vec text;
+ };
+type ChemicalReaction = 
+ record {
+   balancedEquation: text;
+   category: text;
+   description: text;
+   energyChange: text;
+   id: text;
+   name: text;
+   namedReaction: text;
+   observations: vec text;
+   products: vec ChemicalProduct;
+   reactants: vec ChemicalReactant;
+   reactionType: text;
+ };
+type ChemicalReactant = 
+ record {
+   coefficient: nat;
+   name: text;
+   symbol: text;
+ };
+type ChemicalProduct = 
+ record {
+   coefficient: nat;
+   formula: text;
+   name: text;
+   symbol: text;
+ };
+service : {
+  getAllElements: () -> (vec Element) query;
+  getElement: (symbol: text) -> (opt Element) query;
+  getFavorites: () -> (vec text) query;
+  getMyProfile: () -> (opt Profile) query;
+  getMyStats: () -> (UserStats) query;
+  getPublicProfile: (userId: principal) -> (opt Profile) query;
+  getQuizQuestion: (id: text) -> (opt QuizQuestion) query;
+  getQuizQuestions: (difficulty: text, topic: text) ->
+   (vec QuizQuestion) query;
+  getReaction: (id: text) -> (opt ChemicalReaction) query;
+  getReactions: () -> (vec ChemicalReaction) query;
+  getReactionsByCategory: (category: text) -> (vec ChemicalReaction) query;
+  getReactionsByType: (rtype: text) -> (vec ChemicalReaction) query;
+  getReactivityMetal: (symbol: text) -> (opt ReactivityMetal) query;
+  getReactivitySeries: () -> (vec ReactivityMetal) query;
+  recordActivity: () -> ();
+  searchElements: (searchTerm: text) -> (vec Element) query;
+  searchReactions: (term: text) -> (vec ChemicalReaction) query;
+  toggleFavorite: (symbol: text) -> (bool);
+  updateProgress: (score: nat) -> ();
+  upsertMyProfile: (input: ProfileInput) -> (Profile);
+}
